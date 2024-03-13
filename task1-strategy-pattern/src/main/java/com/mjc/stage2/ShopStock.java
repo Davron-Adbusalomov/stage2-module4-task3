@@ -1,5 +1,9 @@
 package com.mjc.stage2;
 
+import com.mjc.stage2.impl.ManufactureFilteringStrategy;
+import com.mjc.stage2.impl.MaxPriceFilteringStrategy;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class ShopStock {
@@ -9,5 +13,13 @@ public class ShopStock {
         this.productList = productList;
     }
 
-    // Write your code here!
+    public List<Product> executeFilteringStrategy(FilteringStrategy filteringStrategy){
+        List<Product> filteredProducts = new ArrayList<>();
+        for (Product p:productList) {
+            if (filteringStrategy.filter(p)){
+                filteredProducts.add(p);
+            }
+        }
+        return filteredProducts;
+    }
 }
